@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <br>
+    <div class="card">
+        <div class="card-header h1">
+            Videoteca
+        </div>
+        <div class="card-body">
+            <select class="form-control" style="height:50px" name="con" (change)="obtenerVideos($event)" >
+                <option *ngFor='let con of conciertos' [value]='con.id'>{{con.nombre}} {{con.fecha}} </option>
+            </select>
+            <hr>
+            <table>
+                <tbody *ngFor="let video of videoteca" id="videos">                  
+                    <td width="270">
+                        <iframe width="250" height="165" [src]="video.enlace | safe" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>{{video.titulo}}</iframe> 
+                    </td>  
+                    <td width="250">
+                        <p>{{video.titulo}} ({{video.autor}})</p>
+                        <p><i *ngIf="fnLogged() && fnAdmin()" class="fas fa-trash-alt" (click)="eliminarVideo(video.id)">Borrar</i></p>
+                        <p><i *ngIf="fnLogged() && fnAdmin()" class="fas fa-edit" (click)="video.id ? formEdit.patchValue(video):formEdit.reset()" data-toggle="modal" data-target="#modal">Editar</i></p>
+                    </td>
+                                 
+                </tbody>
+            </table>
+        </div>   
+    </div>
+    <br>
+    <div *ngIf="fnLogged() && fnAdmin()">
+        <div class="card">
+            <div class="card-header h2">
+                Nuevo Concierto
+            </div>
+            <div class="card-body">
+                <form [formGroup]="formConcierto" (ngSubmit)="crearConcierto()">
+                    <input class="form-control" type="text" placeholder="Nombre" formControlName="nombre">
+                    <input class="form-control" type="date" formControlName="fecha">
+                    <button type="submit" [disabled]="formConcierto.invalid" class="btn btn-primary">Crear concierto</button>
+                </form>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header h2">
+                Subir Video
+            </div>
+            <div class="card-body">
+                <p>Para subir un video utilice el enlace que aparece en la opción compartir en el video de youtube</p>   
+                <form [formGroup]='formNuevo' (ngSubmit)='insertarVideo()'>
+                    <input class="form-control" type="text" placeholder="Titulo" formControlName="titulo">
+                    <input class="form-control" type="text" placeholder="Autor" formControlName="autor">
+                    <input class="form-control" type="text" placeholder="Enlace" formControlName="enlace">
+                    <select class="form-control" style="height:50px" name="con" formControlName="id_concierto" [(ngModel)]="id_concierto">
+                        <option *ngFor='let con of conciertos' [value]='con.id'>{{con.nombre}} {{con.fecha}} </option>
+                    </select>
+                    <button type="submit" [disabled]="formNuevo.invalid" class="btn btn-primary">Insertar video</button>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Actualizar Video</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]='formEdit'>
+                <input class="form-control" type="text" placeholder="Titulo" formControlName="titulo">
+                <input class="form-control" type="text" placeholder="Autor" formControlName="autor">
+                <input class="form-control" type="text" placeholder="Enlace" formControlName="enlace">
+                <select class="form-control" style="height:50px" name="con" formControlName="id_concierto" [(ngModel)]="id_concierto">
+                    <option *ngFor='let con of conciertos' [value]='con.id'>{{con.nombre}} {{con.fecha}} </option>
+                </select>
+            </form>
+        </div>
+        <div class="modal-footer">
+          
+          <button type="button" class="btn btn-warning" (click)='editarVideo()' [disabled]="formEdit.invalid" data-dismiss="modal">Editar video</button>
+          <button type="button" class="btn btn-dark" data-dismiss="modal" (click)='formEdit.reset()'>Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    
+</body>
+</html>

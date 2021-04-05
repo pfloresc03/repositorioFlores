@@ -1,0 +1,11 @@
+.alert{
+    color: red;
+}
+.card{
+    width: 500px;
+    margin: 0 auto;
+}
+.card-header{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-style: italic;
+}

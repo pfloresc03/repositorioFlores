@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <br>
+        <div class="row">
+            <div class="col-3" *ngIf="!fnAdmin()"></div>
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-header h1 text-center">
+                        Listado de Obras
+                    </div>
+                    <div class="card-body">
+                        <dl>
+                            <dt *ngFor="let obra of obras">
+                                <p><a [routerLink]="['/partituras',obra.id]">{{obra.nombre}} ({{obra.autor}})</a> &nbsp;
+                                    <i *ngIf="fnAdmin()" class="fas fa-edit" (click)="obra.id ? formNuevo.patchValue(obra):formNuevo.reset()">Editar</i> &nbsp;
+                                    <i *ngIf="fnAdmin()" class="fas fa-trash-alt" (click)="eliminarObra(obra.id)">Borrar</i>
+                                </p> 
+                                <hr>                   
+                            </dt>
+                        </dl>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-3" *ngIf="!fnAdmin()"></div>
+            <div class="col-6" *ngIf="fnAdmin()">
+                <div class="card">
+                    <div class="card-header h1 text-center">
+                        Añadir obra
+                    </div>
+                    <div class="card-body">
+                        <form [formGroup]='formNuevo' (ngSubmit)='crearObra()'>
+                            <input class="form-control" type="text" placeholder="Nombre" formControlName="nombre">
+                            <input class="form-control" type="text" placeholder="Autor" formControlName="autor">
+                            <button type="submit" *ngIf="!formNuevo.value.id; else editar" [disabled]="formNuevo.invalid" class="btn btn-primary">Crear obra</button>
+                            
+                            <ng-template #editar>
+                                <button type="button" class="btn btn-warning" (click)='editarObra()' [disabled]="formNuevo.invalid">Editar obra</button>
+                                <button type="button" class="btn btn-dark" (click)='formNuevo.reset()'>Cancelar</button>
+                            </ng-template>
+                        </form>
+                    </div>
+                </div>
+ 
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>

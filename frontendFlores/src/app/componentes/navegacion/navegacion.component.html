@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/home"><img src="assets/icon/icon.png" width="45px"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/home">Historia
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/director">Director</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/galardones">Galardones <i class="fas fa-medal"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/videoteca">Videoteca <i class="fab fa-youtube"></i></a>
+        </li>
+        <li class="nav-item" *ngIf="fnLogged()">
+          <a class="nav-link" routerLink="/obras">Partituras <i class="fa fa-file-pdf" aria-hidden="true"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/mapa">Donde estamos <i class="fas fa-map-marker-alt"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/sobreMi">Sobre Mi <i class="fas fa-address-book"></i></a>
+        </li>
+      </ul>
+      <ul class="navbar-nav mt-2 mt-lg-0">
+        <ng-template [ngIf]='!fnLogged()' [ngIfElse]='salir'>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/registro">Registro <i class="fa fa-user-circle" aria-hidden="true"></i></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" routerLink="/login">Login <i class="fa fa-sign-in-alt" aria-hidden="true"></i></a>
+            </li>
+        </ng-template>
+        <ng-template #salir>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/perfil">Perfil <i class="fa fa-id-card" aria-hidden="true"></i></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" (click)="doLogout()" routerLink=".">Logout <i class="fa fa-sign-out-alt" aria-hidden="true"></i></a>
+            </li>
+        </ng-template>
+    </ul>
+    </div>
+  </nav>
