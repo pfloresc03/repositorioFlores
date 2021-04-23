@@ -18,15 +18,20 @@
             <hr>
             <table>
                 <tbody *ngFor="let video of videoteca" id="videos">                  
-                    <td width="270">
-                        <iframe width="250" height="165" [src]="video.enlace | safe" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>{{video.titulo}}</iframe> 
-                    </td>  
-                    <td width="250">
-                        <p>{{video.titulo}} ({{video.autor}})</p>
-                        <p><i *ngIf="fnLogged() && fnAdmin()" class="fas fa-trash-alt" (click)="eliminarVideo(video.id)">Borrar</i></p>
-                        <p><i *ngIf="fnLogged() && fnAdmin()" class="fas fa-edit" (click)="video.id ? formEdit.patchValue(video):formEdit.reset()" data-toggle="modal" data-target="#modal">Editar</i></p>
-                    </td>
-                                 
+                    <tr>
+                        <td width="270">
+                            <iframe width="250" height="165" [src]="video.enlace | safe" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>{{video.titulo}}</iframe> 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="270">
+                            <p class="font-weight-bold">{{video.titulo}}</p>
+                            <p>({{video.autor}})</p>
+                            <p><i *ngIf="fnLogged() && fnAdmin()" class="fas fa-trash-alt" (click)="eliminarVideo(video.id)">Borrar</i> &nbsp;
+                            <i *ngIf="fnLogged() && fnAdmin()" class="fas fa-edit" (click)="video.id ? formEdit.patchValue(video):formEdit.reset()" data-toggle="modal" data-target="#modal">Editar</i></p>
+                        </td>
+                    </tr>
+                               
                 </tbody>
             </table>
         </div>   

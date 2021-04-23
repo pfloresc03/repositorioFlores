@@ -54,7 +54,7 @@ class PartiturasController {
         if(move_uploaded_file($rutaTemp,$ruta)) {
   
           //Prepara el contenido del campo imgSrc
-          $archivo = "http://localhost/backendfinal/partituras/".$nombre;
+          $archivo = "http://localhost/repositorioFlores/backendFlores/partituras/".$nombre;
   
           $eval = "INSERT INTO partituras (archivo, nombre, id_obra, id_instrumento, voz) VALUES (?,?,?,?,?)";
           $peticion = $this->db->prepare($eval);
