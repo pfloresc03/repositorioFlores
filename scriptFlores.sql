@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-04-2021 a las 15:58:01
+-- Tiempo de generación: 23-04-2021 a las 19:23:20
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.10
 
@@ -118,9 +118,10 @@ CREATE TABLE `partituras` (
 --
 
 INSERT INTO `partituras` (`id`, `archivo`, `nombre`, `id_obra`, `id_instrumento`, `voz`) VALUES
-(2, 'http://localhost/backendfinal/partituras/Ferling.pdf', 'Ferling.pdf', 1, 1, 1),
-(5, 'http://localhost/backendfinal/partituras/Bartók, Béla - Para niños, Sz.42 Vol.1.pdf', 'Bartók, Béla - Para niños, Sz.42 Vol.1.pdf', 2, 3, 3),
-(6, 'http://localhost/backendfinal/partituras/Bartók, Béla - Primer término al piano, Sz.53.pdf', 'Bartók, Béla - Primer término al piano, Sz.53.pdf', 1, 17, 2);
+(2, 'http://localhost/repositorioFlores/backendFlores/partituras/Ferling.pdf', 'Ferling.pdf', 1, 1, 1),
+(5, 'http://localhost/repositorioFlores/backendFlores/partituras/Bartók, Béla - Para niños, Sz.42 Vol.1.pdf', 'Bartók, Béla - Para niños, Sz.42 Vol.1.pdf', 2, 3, 3),
+(6, 'http://localhost/repositorioFlores/backendFlores/partituras/Bartók, Béla - Primer término al piano, Sz.53.pdf', 'Bartók, Béla - Primer término al piano, Sz.53.pdf', 1, 17, 2),
+(7, 'http://localhost/repositorioFlores/backendFlores/partituras/IMSLP314940-PMLP508711-Dohnanyi-Essential_Finger_Exercises_P1.pdf', 'IMSLP314940-PMLP508711-Dohnanyi-Essential_Finger_Exercises_P1.pdf', 2, 8, 2);
 
 -- --------------------------------------------------------
 
@@ -162,7 +163,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `idRol`, `nombre`, `apellidos`, `email`, `password`) VALUES
 (1, 14, 'Pablo', 'Flores', 'pabloflores11@hotmail.com', '$2y$10$IQRBWs4zJrpvCNHfdVzQmuGMt8g3i6SbxCmYFI/PSpWcac.cm4SKG'),
-(3, 1, 'Javier', 'Flores', 'javier@hotmail.com', '$2y$10$TZcj9UXrcelqKlH4CGkiMuKeG8NBSA3mjfBxNN8o/2SDOfVDn0kKi');
+(3, 1, 'Javier', 'Flores', 'javier@hotmail.com', '$2y$10$TZcj9UXrcelqKlH4CGkiMuKeG8NBSA3mjfBxNN8o/2SDOfVDn0kKi'),
+(4, 14, 'Admin', 'Admin', 'admin@admin.com', '$2y$10$FkgEpJqOxdUToUV/FpdrI.L9YSaDL5crVFsmSt0GHf/p.RauJ4ouy');
 
 -- --------------------------------------------------------
 
@@ -272,13 +274,13 @@ ALTER TABLE `obras`
 -- AUTO_INCREMENT de la tabla `partituras`
 --
 ALTER TABLE `partituras`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `videoteca`
