@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-04-2021 a las 19:23:20
+-- Tiempo de generación: 25-05-2021 a las 22:56:20
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.10
 
@@ -76,7 +76,8 @@ INSERT INTO `instrumentos` (`id`, `nombreInst`) VALUES
 (14, 'violonchelo'),
 (15, 'percusión'),
 (16, 'corno ingles'),
-(17, 'piano');
+(17, 'piano'),
+(18, 'general');
 
 -- --------------------------------------------------------
 
@@ -96,7 +97,11 @@ CREATE TABLE `obras` (
 
 INSERT INTO `obras` (`id`, `nombre`, `autor`) VALUES
 (1, 'Ferling', 'señor ferling'),
-(2, 'Prueba', 'Anónimo');
+(5, 'Estudios', 'Anónimo'),
+(6, 'Paquito el chocolatero', 'Gustavo Pascual Falcó'),
+(7, 'El Gato Montés', 'Manuel Penella'),
+(8, 'Tercio de Quites', 'Rafael Taléns'),
+(9, 'Varias', 'Anónimo');
 
 -- --------------------------------------------------------
 
@@ -119,9 +124,15 @@ CREATE TABLE `partituras` (
 
 INSERT INTO `partituras` (`id`, `archivo`, `nombre`, `id_obra`, `id_instrumento`, `voz`) VALUES
 (2, 'http://localhost/repositorioFlores/backendFlores/partituras/Ferling.pdf', 'Ferling.pdf', 1, 1, 1),
-(5, 'http://localhost/repositorioFlores/backendFlores/partituras/Bartók, Béla - Para niños, Sz.42 Vol.1.pdf', 'Bartók, Béla - Para niños, Sz.42 Vol.1.pdf', 2, 3, 3),
-(6, 'http://localhost/repositorioFlores/backendFlores/partituras/Bartók, Béla - Primer término al piano, Sz.53.pdf', 'Bartók, Béla - Primer término al piano, Sz.53.pdf', 1, 17, 2),
-(7, 'http://localhost/repositorioFlores/backendFlores/partituras/IMSLP314940-PMLP508711-Dohnanyi-Essential_Finger_Exercises_P1.pdf', 'IMSLP314940-PMLP508711-Dohnanyi-Essential_Finger_Exercises_P1.pdf', 2, 8, 2);
+(11, 'http://localhost/repositorioFlores/backendFlores/partituras/paquito el cocholateroclappal.pdf', 'paquito el cocholateroclappal.pdf', 6, 2, 1),
+(12, 'http://localhost/repositorioFlores/backendFlores/partituras/paquito el chocolatero cl2.pdf', 'paquito el chocolatero cl2.pdf', 6, 2, 2),
+(13, 'http://localhost/repositorioFlores/backendFlores/partituras/paquito el chocolatero trom.pdf', 'paquito el chocolatero trom.pdf', 6, 11, 1),
+(14, 'http://localhost/repositorioFlores/backendFlores/partituras/paquito el cocholaterosx1.pdf', 'paquito el cocholaterosx1.pdf', 6, 4, 1),
+(15, 'http://localhost/repositorioFlores/backendFlores/partituras/paquito el chocolatero flau.pdf', 'paquito el chocolatero flau.pdf', 6, 3, 1),
+(16, 'http://localhost/repositorioFlores/backendFlores/partituras/Dohnanyi Essential Finger Exercises P1.pdf', 'Dohnanyi Essential Finger Exercises P1.pdf', 5, 17, 1),
+(17, 'http://localhost/repositorioFlores/backendFlores/partituras/Bartók, Béla - Para niños, Sz.42 Vol.1.pdf', 'Bartók, Béla - Para niños, Sz.42 Vol.1.pdf', 5, 17, 1),
+(18, 'http://localhost/repositorioFlores/backendFlores/partituras/Bartók, Béla - Primer término al piano, Sz.53.pdf', 'Bartók, Béla - Primer término al piano, Sz.53.pdf', 5, 17, 1),
+(19, 'http://localhost/repositorioFlores/backendFlores/partituras/Mater-Mea.pdf', 'Mater-Mea.pdf', 9, 18, 1);
 
 -- --------------------------------------------------------
 
@@ -262,19 +273,19 @@ ALTER TABLE `conciertos`
 -- AUTO_INCREMENT de la tabla `instrumentos`
 --
 ALTER TABLE `instrumentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `obras`
 --
 ALTER TABLE `obras`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `partituras`
 --
 ALTER TABLE `partituras`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
